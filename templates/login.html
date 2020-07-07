@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="static/css/login.css">
+<title>Login</title>
+{% endblock %}
+
+{% block body %}
+
+
+<form action="", method="POST">
+    <div class="box">
+        <h2>Login</h2>   
+        {{form.hidden_tag()}}
+        <div>
+            <fieldset>
+                <div class="input-container">
+                    {{form.email( class="effect-1", type="email" ,placeholder="Email") }} 
+                    <span class="focus-border"></span><br>
+                    {% for error in form.email.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div> <br>
+                <div class="input-container"> 
+                    {{form.password ( class="effect-1", type="password" ,placeholder="Password") }}
+                    <span class="focus-border"></span> <br>
+                    {% for error in form.password.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                <div class="input-container">
+                    {{form.remember.label (style="color:white;")}}
+                    {{form.remember}}
+                </div> <br>
+
+
+                {{form.submit (class="button")}}
+
+                <div  class="input-container">
+                    <span style="color: aliceblue;"><a href="{{url_for('request_reset_password')}}">Forgot Password?</a>
+                </div>
+                  </form>
+
+                <div  class="input-container">
+                    <span style="color: aliceblue;">Don't have an Account?</span><a href="register">Register</a>
+                  </div>
+                  </form>
+
+            </fieldset>
+       </div>
+    </div>
+{% endblock %}

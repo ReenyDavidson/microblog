@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="static/css/register.css">
+<title>Register</title>
+{% endblock %}
+
+{% block body %}
+
+<form action="", method="POST">
+    <div class="box">
+        <h2>Register</h2>
+        {{form.hidden_tag()}}
+        <div>
+            <fieldset>
+                <div  class="input-container">
+                    {{form.username ( class="effect-1", type="text" ,placeholder="Username")}}
+                    <span class="focus-border"></span> <br>
+                    {% for error in form.username.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+               </div> <br>
+                <div  class="input-container">
+                    {{form.email ( class="effect-1", type="email" ,placeholder="Email") }} 
+                    <span class="focus-border"></span><br>
+                    {% for error in form.email.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div> <br>
+                <div  class="input-container">
+                    {{form.password ( class="effect-1", type="password" ,placeholder="Password") }}
+                    <span class="focus-border"></span> <br>
+                    {% for error in form.password.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div> <br>
+
+                {{form.submit  (class="button")}}
+
+                <div  class="input-container">
+                    <span style="color: aliceblue;">Alraedy Have an Account?</span><a href="login">Login Here</a> 
+                  </div>
+
+            </fieldset>
+       </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+{% endblock %}
+

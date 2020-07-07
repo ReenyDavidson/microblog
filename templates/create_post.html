@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="static/css/create_post.css">
+
+<title>Make A Post</title>
+
+{% endblock %}
+
+{% block body %}
+
+<form action="", method="POST">
+    <div class="box">
+        <h2>{{ legend }}</h2>   
+        {{form.hidden_tag()}}
+        <div>
+            <fieldset>
+                <div class="input-container">
+                    {{form.title (placeholder="Title...")}} <br>
+                    {% for error in form.title.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div> <br>
+                <div class="input-container"> 
+                    {{form.content(placeholder="Write...") }} <br>
+                    {% for error in form.content.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {{form.submit(class='button')}}
+
+            </fieldset>
+       </div>
+    </div>
+</form>
+
+
+{% endblock %}

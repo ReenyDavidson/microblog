@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %} {% endblock %}
+
+
+{% block body %}
+
+<form action="", method="POST", enctype="multipart/form-data">
+    <div>   
+        {{form.hidden_tag()}}
+        <div>
+            <h2>Profile Info</h2>
+                <div>
+                    {{form.username }}
+                    {% for error in form.username.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+            </div> <br>
+                <div>
+                    {{form.email }} <br>
+                    {% for error in form.email.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div> <br>
+                <div>
+                    {{form.picture.label}}
+                    {{form.picture }} <br>
+                    {% for error in form.picture.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>    
+                {{form.submit}}
+    </div>
+    </div>
+</form>
+
+
+
+
+
+{% endblock %}
+

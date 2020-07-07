@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %} 
+
+<link rel="stylesheet" href="static/css/index.css">
+<title>microblog</title>{% endblock %}
+
+{% block body %} 
+
+<nav>
+    <div class="logo">
+      <h4>MICROBLOG</h4>
+    </div>
+    <ul class="nav-links">
+      <li><a href="login">LOGIN</a></li>
+      <li><a href="register">REGISTER</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  <div class="header">
+    <section>
+      <h1>YOUR </h1>
+      <h1 style="color: yellow;">OPINION</h1>
+      <h1>MATTERS</h1>
+      <button class="signup"><a href="register" class="signup-link">LET'S HEAR YOU</a></button>
+
+    </section>
+  </div>
+  <script src="static/javascript/home.js"></script>
+
+
+
+{% endblock %}

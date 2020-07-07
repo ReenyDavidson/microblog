@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="static/css/login.css">
+<title>Login</title>{% endblock %}
+
+{% block body %}
+
+
+<form action="", method="POST">
+    <div class="box">
+        <h2>Reset Password</h2>   
+        {{form.hidden_tag()}}
+        <div>
+            <fieldset>
+                <div class="input-container"> 
+                    {{form.password ( class="effect-1", type="password" ,placeholder="Password") }}
+                    <span class="focus-border"></span> <br>
+                    {% for error in form.password.error %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+
+                {{form.submit (class="button")}}
+                  </form>
+
+            </fieldset>
+       </div>
+    </div>
+{% endblock %}

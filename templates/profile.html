@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block head %} <title>profile page</title>
+<link rel="stylesheet" href="{{url_for('static', filename='css/profile.css')}}">
+
+{% endblock %}
+
+{% block body %} 
+<div class="profile-body">
+        
+    <div>
+        <div class="profile-info">
+            <img src="{{ image_file }}" class="profile-img">   
+            <h2 class="profile-user">{{ current_user.username }}</h2>
+            <p class="profile-email">{{current_user.email }}</p>
+        </div> 
+    </div>
+<a href="edit_profile" class="edit_profile">Edit Profile</a>
+</div>
+{% endblock %}

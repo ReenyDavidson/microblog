@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="static/css/home.css">
+{% endblock %}
+
+{% block body %} 
+<nav>
+    <div class="logo">
+      <h4>MICROBLOG</h4>
+    </div>
+    <ul class="nav-links">
+      <li><a href="profile">Profile</a></li>
+      <li><a href="post">Make A Post</a></li>
+      <li><a href="logout">Logout</a></li>
+    </ul>
+    <div class="burger">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+  </nav>
+  <script src="static/javascript/home.js"></script>
+<div class="body">
+<h3>Welcome {{current_user.username}} </h3>
+
+<article class="box">
+{% for post in posts.items %}
+
+<img src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}", class="article-img">
+<div class="media-body">
+    <div class="article-metadata">
+        <a href="{{ url_for('user_posts', username=post.author.username)}}" class="mr-2">{{ post.author.username }}</a>
+        <small class="text-muted">{{ post.time.strftime('%Y-%m-%d') }}</small>
+    </div>
+    <h2><a class="article-title" href="{{url_for('fullpost', post_id=post.id)}}">{{ post.title }}</a></h2>
+    <p class="article-content">{{ post.content}}</p>
+    <div style="border-bottom: 3px solid midnightblue; position: relative; top: 5px; ;"></div>
+</div> <br>
+{% endfor %}
+{% for page_num in posts.iter_pages(left_edge=1,right_edge=1,left_current=1, right_current=2) %}
+    {% if page_num %}
+        {% if posts.page == page_num%}
+            <a class=" btn btn-info mb-4"href="{{url_for('home',page=page_num)}}">{{ page_num }}</a>
+        {% else %}
+        <a class=" btn btn-outline-info mb-4"href="{{url_for('home',page=page_num)}}">{{ page_num }}</a>
+    {% endif %}
+    {% else %} 
+    ...
+    {% endif %} 
+{% endfor %} 
+</article>
+</div>
+
+
+{% endblock %}
